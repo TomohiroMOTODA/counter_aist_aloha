@@ -1,5 +1,5 @@
 [project]
-name = "aist_aloha_info"
+name = "counter_aist_aloha"
 version = "0.1.0"
 description = "Analysis tools for AIST ALOHA robot HDF5 datasets"
 authors = [
@@ -14,7 +14,8 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["aist_aloha_info"]
+packages = ["counter_aist_aloha"]
 
 [project.scripts]
-analysis = "aist_aloha_info.bin.analysis:main"
+analysis = "counter_aist_aloha.bin.analysis:main"
+all_analysis = "counter_aist_aloha.bin.all_analysis:main"

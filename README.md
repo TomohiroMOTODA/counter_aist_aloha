@@ -1,4 +1,4 @@
-# aist_aloha_info
+# counter_aist_aloha
 
 Analysis tools for AIST ALOHA robot HDF5 datasets.
 
@@ -14,7 +14,7 @@ Dependencies are `h5py` and `numpy`.
 
 ```bash
 # after Git clone
-cd aist_aloha_info 
+cd counter_aist_aloha 
 pip install -e .
 ```
 
@@ -23,12 +23,12 @@ pip install -e .
 You can analyze HDF5 datasets using the command-line tool `analysis`.
 
 ```bash
-cd aist_aloha_info
+cd counter_aist_aloha
 python ./bin/analysis <path to data directory>
 ```
 or
 ```bash
-python -m aist_aloha_info.bin.analysis
+python -m counter_aist_aloha.bin.analysis
 ```
 
 To batch analyze **all subfolders** and output a summary CSV and JSON to `./data`, use:
@@ -54,7 +54,7 @@ The analysis results will be output as `hdf5_analysis_summary.csv` (single folde
 
 ## Configuration File
 
-Describe robot and environment meta information in `aist_aloha_info/config/meta.json`.
+Describe robot and environment meta information in `counter_aist_aloha/config/meta.json`.
 
 ## License
 
