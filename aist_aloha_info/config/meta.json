@@ -1,0 +1,13 @@
+{
+    "ROBOT_ID": "aloha_001",
+    "OPERATOR_ID": "001",
+    "LINK": "",
+    "NOTE": "",
+    "ENVIRONMENT": "aloha_legacy",
+    "SOFTWARE_VERSION": "ROS2_Humble",
+    "FRAME_RATE": 50,
+    "TARGET_ITEM": "industrial part",
+    "TARGET_AREA": "assembly line",
+    "DATA_TYPE": "hdf5",
+    "DATA_DESCRIPTION": ""
+}

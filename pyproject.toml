@@ -1,0 +1,20 @@
+[project]
+name = "aist_aloha_info"
+version = "0.1.0"
+description = "Analysis tools for AIST ALOHA robot HDF5 datasets"
+authors = [
+    { name = "motoda" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "h5py",
+    "numpy",
+    "tqdm",
+]
+
+[tool.setuptools]
+packages = ["aist_aloha_info"]
+
+[project.scripts]
+analysis = "aist_aloha_info.bin.analysis:main"
