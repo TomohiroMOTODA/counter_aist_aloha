@@ -58,8 +58,8 @@ Describe robot and environment meta information in `counter_aist_aloha/config/me
 
 ## License
 
-MIT License
+None
 
 ## Author
 
-motoda
+[github@TomohiroMOTODA](https://github.com/TomohiroMOTODA)
