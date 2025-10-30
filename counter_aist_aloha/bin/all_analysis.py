@@ -92,18 +92,19 @@ def analyze_codebase_and_save_csv(codebase_dir, output_dir="./data"):
             total_hours = total_seconds / 3600.0
             summary_rows.append([
                 os.path.basename(folder),
-                num_datasets,
-                total_action_steps,
-                total_action_segments,
                 total_seconds,
                 total_hours,
+                total_action_steps,
+                total_action_segments,
+                 datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 meta_info["robot_id"],
                 meta_info["operator_id"],
                 meta_info["environment"],
                 meta_info["software_version"],
                 meta_info["target_item"],
+                "",
+                "",
                 meta_info["data_description"],
-                datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             ])
 
             pbar.set_postfix({
@@ -118,19 +119,21 @@ def analyze_codebase_and_save_csv(codebase_dir, output_dir="./data"):
     with open(csv_path, mode='w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow([
-            "Folder Name",
-            "Num Datasets",
-            "Total Action Steps",
-            "Total Action Segments",
+            "Task Name (Identifier)",
             "Total Time (seconds)",
             "Total Time (hours)",
+            "Frame Count",
+            "Frame Rate",
             "Robot ID",
             "Operator ID",
+            "Segment Count",
+            "Record Time",
             "Environment",
             "Software Version",
             "Target Item",
+            "Link",
+            "Note",
             "Data Description",
-            "Record Time",
         ])
         writer.writerows(summary_rows)
     print(f"Summary CSV saved to: {csv_path}")
@@ -138,20 +141,19 @@ def analyze_codebase_and_save_csv(codebase_dir, output_dir="./data"):
     # Print summary statistics to console
     print("\n=== Summary Statistics ===")
     print(f"Total folders analyzed: {len(folder_paths)}")
-    print(f"Total datasets: {sum(row[1] for row in summary_rows)}")
-    print(f"Total action steps: {sum(row[2] for row in summary_rows)}")
-    print(f"Total action segments: {sum(row[3] for row in summary_rows)}")
-    print(f"Total time (seconds): {sum(row[4] for row in summary_rows):.2f}")
-    print(f"Total time (hours): {sum(row[5] for row in summary_rows):.2f}")
+    print(f"Total action frames: {sum(row[3] for row in summary_rows)}")
+    print(f"Total action segments: {sum(row[4] for row in summary_rows)}")
+    print(f"Total time (seconds): {sum(row[1] for row in summary_rows):.2f}")
+    print(f"Total time (hours): {sum(row[2] for row in summary_rows):.2f}")
 
     # Save summary statistics as JSON
     summary_json = {
         "total_folders_analyzed": len(folder_paths),
-        "total_datasets": sum(row[1] for row in summary_rows),
-        "total_action_steps": sum(row[2] for row in summary_rows),
-        "total_action_segments": sum(row[3] for row in summary_rows),
-        "total_time_seconds": round(sum(row[4] for row in summary_rows), 2),
-        "total_time_hours": round(sum(row[5] for row in summary_rows), 2),
+        # "total_datasets": sum(row[1] for row in summary_rows),
+        "total_action_steps": sum(row[3] for row in summary_rows),
+        "total_action_segments": sum(row[4] for row in summary_rows),
+        "total_time_seconds": round(sum(row[1] for row in summary_rows), 2),
+        "total_time_hours": round(sum(row[2] for row in summary_rows), 2),
         "record_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
     json_path = os.path.join(output_dir, "hdf5_total_summary.json")

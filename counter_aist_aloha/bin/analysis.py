@@ -83,8 +83,10 @@ def write_summary_csv(data_dir, summary):
             "", 
             summary["data_description"],
         ])
-    with open(csv_path, 'r') as summary_file:
-        print(summary_file.read())
+
+    # debug: print the contents of the CSV
+    # with open(csv_path, 'r') as summary_file:
+    #     print(summary_file.read())
 
 def main():
     parser = argparse.ArgumentParser(description="Analyze HDF5 file for compression and chunking information.")
